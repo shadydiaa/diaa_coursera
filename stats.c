@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file <stats.c> 
+ * @brief <make statstics for given array>
  *
- * <Add Extended Description Here>
+ * 
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author <Shady Diaa>
+ * @date <07/06/2020 >
  *
  */
 
@@ -40,4 +40,30 @@ void main() {
 
 }
 
-/* Add other Implementation File Code Here */
+
+void print_statistics(unsigned char* arr,unsigned int length)
+{
+}
+void print_array(unsigned char* arr,unsigned int length)
+{
+}
+unsigned char find_median(unsigned char* arr,unsigned int length)
+{
+}
+
+unsigned char find_mean(unsigned char* arr,unsigned int length)
+{
+}
+
+unsigned char find_maximum(unsigned char* arr,unsigned int length)
+{
+}
+
+
+unsigned char find_minimum(unsigned char* arr,unsigned int length)
+{
+}
+
+void sort_array(unsigned char* arr,unsigned int length)
+{
+}
