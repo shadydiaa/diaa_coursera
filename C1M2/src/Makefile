@@ -10,16 +10,20 @@
 #*****************************************************************************
 
 #------------------------------------------------------------------------------
-# <Put a Description Here>
+# Simple make file for building system on two platforms :
+#       1)the host environment 
+#       2)the target embedded system MSP432
 #
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
 #
 # Build Targets:
-#      <Put a description of the supported targets here>
+#      <FILE>.o - Builds <FILE>.o object file
+#      build - Builds and links all source files
+#      all - Same as build
+#      clean - removes all generated file
 #
 # Platform Overrides:
-#      <Put a description of the supported Overrides here
-#
+#      PLATFORM - Target platform (HOST, MSP432)
 #------------------------------------------------------------------------------
 include sources.mk
 
@@ -77,6 +81,9 @@ DEPS=$(SOURCES:.c=.d)
 # Generate dependency Files for each source file 
 %.d:%.c
 	$(CC)  $(CFLAGS) $(CPPFLAGS) -D$(PLATFORM) -c $^ -o $@
+
+$(BASENAME).asm : $(TARGET)
+	$(OBJDUMP) -d $(TARGET) >> $@
 
 
 # Generate object and dependency files but not linking 
