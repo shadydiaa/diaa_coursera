@@ -101,4 +101,4 @@ $(TARGET):$(OBJS) $(DEPS)
 # Remove all generated files 
 .PHONY:clean
 clean:
-	rm $(TARGET) $(OBJS) $(DEPS) *.i *.asm $(BASENAME).map
+	rm -f $(TARGET) $(OBJS) $(DEPS) *.i *.asm $(BASENAME).map
