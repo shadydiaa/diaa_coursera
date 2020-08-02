@@ -38,8 +38,8 @@ SPECS = nosys.specs
 # Compiler Flags and Defines
 CC = gcc
 LD = ld
-BASENAME=c1m2
-TARGET=$(BASENAME).out
+BASENAME=app
+TARGET=$(BASENAME).exe
 CFLAGS = -Wall -Werror -g -O0 -std=c99
 LDFLAGS = -Wl,-Map=$(BASENAME).map
 		 
@@ -47,7 +47,7 @@ LDFLAGS = -Wl,-Map=$(BASENAME).map
 ifeq ($(PLATFORM),MSP432)
 	CC=arm-none-eabi-gcc
 	LD = arm-none-eabi-ld
-	LINKER_FILE =../msp432p401r.lds
+	LINKER_FILE =msp432p401r.lds
 	CFLAGS+=-mcpu=$(CPU) -m$(ARCH) -specs=$(SPECS) -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16
 	LDFLAGS+=-T$(LINKER_FILE) 
 	SOURCES=$(MSP432_SOURCES)
@@ -68,15 +68,15 @@ DEPS=$(SOURCES:.c=.d)
 
 # Generate the preprocessed output of all c-program implementation files
 %.i:%.c
-	$(CC)  $(CFLAGS) $(CPPFLAGS) -D$(PLATFORM) -E $^ -o $@
+	$(CC)  $(CFLAGS) $(CPPFLAGS) -D$(PLATFORM)  -E $^ -o $@
 
 # Generate assembly output of c-program implementation files and the final output executable
 %.asm:%.c
-	$(CC)  $(CFLAGS) $(CPPFLAGS) -D$(PLATFORM) -S $^ -o $@
+	$(CC)  $(CFLAGS) $(CPPFLAGS) -D$(PLATFORM)  -S $^ -o $@
 
 # Generate the object file for all c-source files
 %.o:%.c
-	$(CC)  $(CFLAGS) $(CPPFLAGS) -D$(PLATFORM) -c $^ -o $@
+	$(CC)  $(CFLAGS) $(CPPFLAGS) -D$(PLATFORM) -DCOURSE1 -DVERBOSE -c $^ -o $@
 
 # Generate dependency Files for each source file 
 %.d:%.c
@@ -94,7 +94,7 @@ compile-all:$(OBJS) $(DEPS)
 .PHONY:build 
 build:$(TARGET)
 $(TARGET):$(OBJS) $(DEPS) 
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -D$(PLATFORM) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)  -D$(PLATFORM) $(OBJS) -o $@
 	$(size) $(TARGET)
 
 

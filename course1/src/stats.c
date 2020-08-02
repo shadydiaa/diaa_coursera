@@ -22,44 +22,27 @@
 
 
 #include <stdio.h>
-#include "stats.h"
+#include "../include/common/stats.h"
 
-/* Size of the Data Set */
-#define SIZE (40)
 
-void main() {
-
-  unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
-                              114, 88,   45,  76, 123,  87,  25,  23,
-                              200, 122, 150, 90,   92,  87, 177, 244,
-                              201,   6,  12,  60,   8,   2,   5,  67,
-                                7,  87, 250, 230,  99,   3, 100,  90};
-  
-  printf("Array Elements : \n");
-  print_array(test,sizeof(test));
-  printf("*************************\n");
-  printf("Statistics : \n");
-  print_statistics(test,sizeof(test));
-  printf("*************************\n");
-  printf("Array Elements after sorted descending:\n");
-  print_array(test,sizeof(test));
-}
 
 
 void print_statistics(unsigned char* arr,unsigned int length)
 {
-	printf("Min : %d\n",find_minimum(arr,length));
-	printf("Max : %d\n",find_maximum(arr,length));
-	printf("Mean : %d\n",find_mean(arr,length));
-	printf("Median : %d\n",find_median(arr,length));
+	PRINTF("Min : %d\n",find_minimum(arr,length));
+	PRINTF("Max : %d\n",find_maximum(arr,length));
+	PRINTF("Mean : %d\n",find_mean(arr,length));
+	PRINTF("Median : %d\n",find_median(arr,length));
 }
 void print_array(unsigned char* arr,unsigned int length)
 {
+	#ifdef VERBOSE 
 	unsigned char counter; 
 	for(counter=0;counter<length;counter++)
 	{
-		printf("arr[%d]=%d\n",counter,arr[counter]);
+		PRINTF("arr[%d]=%d\n",counter,arr[counter]);
 	}
+	#endif
 }
 unsigned char find_median(unsigned char* arr,unsigned int length)
 {

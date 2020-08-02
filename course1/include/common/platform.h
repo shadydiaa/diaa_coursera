@@ -8,8 +8,8 @@
  * misuse of this material. 
  *
  *****************************************************************************/
-#ifndef __PLATFORM_H__
-#define __PLATFORM_H__
+#ifndef PLATFORM_H__
+#define PLATFORM_H__
 
 /******************************************************************************
  Platform - MSP432

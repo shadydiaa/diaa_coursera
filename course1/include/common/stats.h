@@ -21,6 +21,7 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
+#include "platform.h"
 /**
  * @brief <print_statistics of given array>
  *

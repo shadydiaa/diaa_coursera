@@ -19,8 +19,14 @@
  * @date April 1 2017
  *
  */
-#ifndef __MEMORY_H__
-#define __MEMORY_H__
+#ifndef MEMORY_H_
+#define MEMORY_H_
+
+
+#include <stdlib.h>
+#include <stdint.h>
+
+
 
 /**
  * @brief Sets a value of a data array 
@@ -32,7 +38,7 @@
  * @param index Index into pointer array to set value
  * @param value value to write the the locaiton
  *
- * @return void.
+ * @return void type.
  */
 void set_value(char * ptr, unsigned int index, char value);
 
@@ -89,5 +95,117 @@ void set_all(char * ptr, char value, unsigned int size);
  * @return void.
  */
 void clear_all(char * ptr, unsigned int size);
+
+
+/**
+ * @brief move bytes from the source location to the destination. 
+ *
+ * Given a pointer to a source data set, this will set a provided ,
+ * a pointer to a destination data set, this will set a provided  ,
+ * the length which will be moved and  
+ * return a pointer to destination data set.
+ *
+ * @param src Pointer to source array  
+ * @param dst Pointer to destination array
+ * @param length numbers of bytes which will move from the source location to the destination
+ *
+ * @return unsigned char pointer to the destination (1 byte).
+ */
+
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief copy bytes from the source location to the destination. 
+ *
+ * Given a pointer to a source data set, this will set a provided ,
+ * a pointer to a destination data set, this will set a provided , 
+ * the length which will be copied and  
+ * return a pointer to destination data set.
+ *
+ * @param src Pointer to source array  
+ * @param dst Pointer to destination array
+ * @param length numbers of bytes which will copy from the source location to the destination
+ *
+ * @return unsigned char pointer to the destination (1 byte).
+ */
+
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief set all locations of that memory to a given value.
+ *
+ * Given a pointer to a source data set, this will set a provided ,
+ * the value which will be set , this will set a provided and
+ * the length of source data set and   
+ * return a pointer to source data set.
+ *
+ * @param src Pointer to source array  
+ * @param value which will be set in source data set
+ * @param length numbers of bytes which will set 
+ *
+ * @return unsigned char pointer to the source (1 byte).
+ */
+
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @brief zero out all of the memory.
+ *
+ * Given a pointer to a source data set, this will set a provided ,
+ * the length of source data set and   
+ * return a pointer to source data set.
+ *
+ * @param src Pointer to source array  
+ * @param length numbers of bytes which will cleared
+ *
+ * @return unsigned char pointer to the source (1 byte).
+ */
+
+uint8_t * my_memzero(uint8_t * src, size_t length);
+
+/**
+ * @brief reverse the order of all of the bytes.
+ *
+ * Given a pointer to a source data set, this will set a provided ,
+ * the length of source data set and   
+ * return a pointer to source data set.
+ *
+ * @param src Pointer to source array  
+ * @param length numbers of bytes which will reversed
+ *
+ * @return unsigned char pointer to the source (1 byte).
+ */
+
+uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @brief allocate number of words in dynamic memory.
+ *
+ * Given the length of source data set and, this will set a provided ,
+ * return a pointer to source data set.
+ *
+ * @param length numbers of bytes which will reversed
+ *
+ * @return unsigned int pointer to the source (4 byte).
+ */
+
+uint32_t * reserve_words(size_t length);
+
+/**
+ * @brief allocate number of words in dynamic memory.
+ *
+ * Given a pointer to a source data set, this will set a provided 
+ *
+ * @param src Pointer to source array  
+ *
+ * @return void
+ */
+
+void free_words(uint32_t * src);
+
+
+
+
+
 
 #endif /* __MEMORY_H__ */
